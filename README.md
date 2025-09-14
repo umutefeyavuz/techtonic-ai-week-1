@@ -4,7 +4,7 @@ Techtonic AI is a web-based chatbot application powered by the TinyLlama-1.1B-Ch
 
 ## Features
 
-- Web-based chat interface built with Flask and HTML/CSS/JavaScript
+- Web-based chat interface built with Flask, HTML, CSS, and JavaScript
 - Real-time conversation with the TinyLlama AI model
 - Automatic message handling with typing indicators
 - Maintains a short conversation history
@@ -24,9 +24,8 @@ Techtonic AI is a web-based chatbot application powered by the TinyLlama-1.1B-Ch
 
 1. Clone the repository:
 
-```bash
-git clone https://github.com/yourusername/techtonic-ai.git
-cd techtonic-ai
+git clone https://github.com/umutefeyavuz/techtonic-ai-week-1.git
+cd techtonic-ai-week-1
 
 2. Create a virtual environment and activate it:
 
@@ -48,9 +47,7 @@ python app.py
 
 http://localhost:5000
 
-Usage
-
-Project Structure:
+## Project Structure
 
 techtonic-ai/
 │
@@ -63,16 +60,14 @@ techtonic-ai/
 ├─ requirements.txt        # Python dependencies
 └─ README.md               # Project documentation
 
-API Endpoints:
+## API Endpoints
 
-POST /ask : Send a user message and receive AI response
+- POST /ask : Send a user message and receive AI response
+- POST /clear : Clear conversation history
+- GET /health : Check the health/status of the model and server
 
-POST /clear : Clear conversation history
+## Notes
 
-GET /health : Check the health/status of the model and server
+- This application is intended for development purposes. For production deployment, a proper WSGI server should be used.
+- Ensure that your machine has sufficient resources to run TinyLlama efficiently. GPU usage is recommended for faster response generation.
 
-Notes:.
-
-This application is intended for development purposes. For production deployment, a proper WSGI server should be used.
-
-Ensure that your machine has sufficient resources to run TinyLlama efficiently. GPU usage is recommended for faster response generation.

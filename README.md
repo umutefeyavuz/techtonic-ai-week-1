@@ -1,73 +1,32 @@
-# Techtonic AI Web Chat
+# Techtonic-AI – Ultra-Optimized TinyLlama Server
 
-Techtonic AI is a web-based chatbot application powered by the TinyLlama-1.1B-Chat model. It provides users with an AI assistant capable of generating responses in English. The web interface allows real-time conversation with the AI via a simple and responsive chat interface.
+This repository contains the latest version of a highly optimized TinyLlama-based chat server.  
 
-## Features
+## What’s New Compared to Last Week
 
-- Web-based chat interface built with Flask, HTML, CSS, and JavaScript
-- Real-time conversation with the TinyLlama AI model
-- Automatic message handling with typing indicators
-- Maintains a short conversation history
-- Health check endpoint to monitor model status
-- Clear conversation history functionality
+- **Much lighter footprint**:  
+  • Cache size reduced and managed via an LRU-style strategy.  
+  • Shorter max history, shorter truncation of user input.  
+  • Reduced thread count on CPU runs.  
 
-## Technologies Used
+- **Better memory management**:  
+  • Automatic cleanup when RAM usage exceeds thresholds (e.g. > 80-85 %).  
+  • GPU/CPU cache clearance when needed.  
+  • Cleaner response trimming to avoid large generated outputs.
 
-- Python 3.10+
-- Flask
-- PyTorch
-- Hugging Face Transformers
-- TinyLlama-1.1B-Chat Model
-- HTML, CSS, JavaScript (Frontend)
+- **More adaptive response generation**:  
+  • Different modes depending on system load (emergency / short input / normal).  
+  • Predefined quick replies for common inputs.  
+  • Dynamic parameters (`max_tokens`, `top_k`, sampling vs greedy) based on input length and load.
 
-## Installation
+- **Performance testing added**:  
+  • Quick validation scenarios.  
+  • A more comprehensive performance test suite measuring response time, CPU & memory peaks.  
+  • Reports & logs to track pass rate vs targets.
 
-1. Clone the repository:
+## Usage
 
-git clone https://github.com/umutefeyavuz/techtonic-ai-week-1.git
-cd techtonic-ai-week-1
-
-2. Create a virtual environment and activate it:
-
-python -m venv venv
-# Windows
-venv\Scripts\activate
-# macOS/Linux
-source venv/bin/activate
-
-3. Install dependencies:
-
-pip install -r requirements.txt
-
-4. Run the application:
-
-python app.py
-
-5. Open your browser and navigate to:
-
-http://localhost:5000
-
-## Project Structure
-
-techtonic-ai/
-│
-├─ app.py                  # Flask web server and endpoints
-├─ chatbot_gptneo.py       # TinyLlama model loading and response generation
-├─ templates/
-│   └─ index.html          # Web interface
-├─ static/
-│   └─ style.css           # CSS styling
-├─ requirements.txt        # Python dependencies
-└─ README.md               # Project documentation
-
-## API Endpoints
-
-- POST /ask : Send a user message and receive AI response
-- POST /clear : Clear conversation history
-- GET /health : Check the health/status of the model and server
-
-## Notes
-
-- This application is intended for development purposes. For production deployment, a proper WSGI server should be used.
-- Ensure that your machine has sufficient resources to run TinyLlama efficiently. GPU usage is recommended for faster response generation.
-
+1. Clone this repository.  
+2. Install dependencies:  
+   ```bash
+   pip install torch transformers psutil
